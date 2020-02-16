@@ -12,4 +12,11 @@ public class TaximeterTest {
 
         assertThat(result, is(6.0));
     }
+
+    @Test
+    public void should_charge_0_point_8_chy_for_mileages_exceeds_2_kilometers_but_less_than_8_kilometers() {
+        double result = new Taximeter(3).calculatePrice();
+
+        assertThat(result, is(6.8));
+    }
 }
