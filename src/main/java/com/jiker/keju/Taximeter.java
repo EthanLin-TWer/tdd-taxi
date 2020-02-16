@@ -1,5 +1,7 @@
 package com.jiker.keju;
 
+import sun.rmi.runtime.Log;
+
 public class Taximeter {
     private int mileage;
     private int waitingMinutes;
@@ -21,14 +23,14 @@ public class Taximeter {
         final int basicPrice = 6;
         final double waitingCharges = waitingMinutes * 0.25;
 
-        if (mileage > 8) {
-            return (int) Math.round(basicPrice + middleBand() + (11 - 8) * 0.8 * 1.5 + waitingCharges);
-        }
+        return (int) Math.round(basicPrice + middleBand() + longDistanceFare() + waitingCharges);
+    }
 
-        return (int) Math.round(basicPrice + middleBand() + waitingCharges);
+    private double longDistanceFare() {
+        return (mileage > 8) ? (mileage - 8) * 0.4 : 0;
     }
 
     private double middleBand() {
-        return mileage > 2 ? Math.min((mileage - 2), 8 - 2) * 0.8 : 0;
+        return mileage > 2 ? (mileage - 2) * 0.8 : 0;
     }
 }
