@@ -19,15 +19,16 @@ public class Taximeter {
 
     public int calculatePrice() {
         final int basicPrice = 6;
+        final double waitingCharges = waitingMinutes * 0.25;
 
         if (mileage > 8) {
-            return (int) Math.round(basicPrice + 6 * 0.8 + (11 - 6 - 2) * 0.8 * 1.5 + waitingMinutes * 0.25);
+            return (int) Math.round(basicPrice + 6 * 0.8 + (11 - 6 - 2) * 0.8 * 1.5 + waitingCharges);
         }
 
         if (mileage > 2) {
-            return (int) Math.round(basicPrice + (mileage - 2) * 0.8 + waitingMinutes * 0.25);
+            return (int) Math.round(basicPrice + (mileage - 2) * 0.8 + waitingCharges);
         }
 
-        return (int) Math.round(basicPrice + waitingMinutes * 0.25);
+        return (int) Math.round(basicPrice + waitingCharges);
     }
 }
