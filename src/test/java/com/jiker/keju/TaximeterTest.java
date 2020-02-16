@@ -20,4 +20,11 @@ public class TaximeterTest {
 
         assertThat(result, is(7));
     }
+
+    @Test
+    public void should_charge_extra_fifty_percent_of_long_distance_fare_for_parts_over_8_kilometers() {
+        int result = new Taximeter(10).calculatePrice();
+
+        assertThat(result, is(13));
+    }
 }
