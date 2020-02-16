@@ -22,13 +22,13 @@ public class Taximeter {
         final double waitingCharges = waitingMinutes * 0.25;
 
         if (mileage > 8) {
-            return (int) Math.round(basicPrice + 6 * 0.8 + (11 - 6 - 2) * 0.8 * 1.5 + waitingCharges);
+            return (int) Math.round(basicPrice + middleBand() + (11 - 8) * 0.8 * 1.5 + waitingCharges);
         }
 
-        if (mileage > 2) {
-            return (int) Math.round(basicPrice + (mileage - 2) * 0.8 + waitingCharges);
-        }
+        return (int) Math.round(basicPrice + middleBand() + waitingCharges);
+    }
 
-        return (int) Math.round(basicPrice + waitingCharges);
+    private double middleBand() {
+        return mileage > 2 ? Math.min((mileage - 2), 8 - 2) * 0.8 : 0;
     }
 }
