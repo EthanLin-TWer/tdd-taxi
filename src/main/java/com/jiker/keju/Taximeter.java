@@ -1,7 +1,9 @@
 package com.jiker.keju;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Taximeter {
     public static final int FREE_KILOMETERS = 2;
@@ -23,7 +25,11 @@ public class Taximeter {
         this(mileage, 0);
     }
 
-    public static String process(String input) {
+    public static String process(String lines) {
+        return Arrays.stream(lines.split("\n")).map(Taximeter::getResultOutput).collect(Collectors.joining("\n"));
+    }
+
+    private static String getResultOutput(String input) {
         Pattern pattern = Pattern.compile("(\\d+)公里,等待(\\d+)分钟");
         Matcher result = pattern.matcher(input);
         if (result.find()) {
