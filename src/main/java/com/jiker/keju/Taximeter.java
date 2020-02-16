@@ -1,10 +1,8 @@
 package com.jiker.keju;
 
-import sun.rmi.runtime.Log;
-
 public class Taximeter {
-    private int mileage;
-    private int waitingMinutes;
+    private final int mileage;
+    private final int waitingMinutes;
 
     public Taximeter(int mileage, int waitingMinutes) {
         this.mileage = mileage;
