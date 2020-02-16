@@ -1,5 +1,8 @@
 package com.jiker.keju;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Taximeter {
     public static final int FREE_KILOMETERS = 2;
     public static final int LONG_DISTANCE_BASE_KILOMETERS = 8;
@@ -21,8 +24,17 @@ public class Taximeter {
     }
 
     public static String process(String input) {
-        final int price = 6;
-        return "收费" + price + "元";
+        Pattern pattern = Pattern.compile("(\\d+)公里,等待(\\d+)分钟");
+        Matcher result = pattern.matcher(input);
+        if (result.find()) {
+            final int mileage = Integer.parseInt(result.group(1));
+            final int waitingMinutes = Integer.parseInt(result.group(2));
+            int price = new Taximeter(mileage, waitingMinutes).calculatePrice();
+            return "收费" + price + "元";
+        }
+        // todo: input file format error
+        // not implemented since the problem itself does not state this case
+        return null;
     }
 
     public int calculatePrice() {
