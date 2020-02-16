@@ -10,7 +10,7 @@ public class AppRunner {
           读取测试数据文件作为你程序的输入参数，
           并将结果保存到receipt变量中。
          */
-        String testDataFile = "src/main/resources/testData.txt";
+        String testDataFile = args[0];
         String input = readFileAsString(testDataFile);
 
         String receipt = new TaximeterPrinter().process(input);
