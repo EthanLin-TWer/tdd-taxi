@@ -1,6 +1,10 @@
 package com.jiker.keju;
 
 public class Taximeter {
+    public static final double CHARGES_PER_MINUTE_WAITING = 0.25;
+    public static final int LONG_DISTANCE_BASE = 8;
+    public static final int FREE_KILOMETERS = 2;
+    public static final double CHARGES_PER_KILOMETER = 0.8;
     private final int mileage;
     private final int waitingMinutes;
 
@@ -20,18 +24,18 @@ public class Taximeter {
     }
 
     public int calculatePrice() {
-        return (int) Math.round(BASIC_PRICE + mileageFee() + longDistanceFare() + waitingCharges());
+        return (int) Math.round(BASIC_PRICE + mileageCharges() + longDistanceFare() + waitingCharges());
     }
 
     private double waitingCharges() {
-        return waitingMinutes * 0.25;
+        return waitingMinutes * CHARGES_PER_MINUTE_WAITING;
     }
 
     private double longDistanceFare() {
-        return (mileage > 8) ? (mileage - 8) * 0.4 : 0;
+        return (mileage > LONG_DISTANCE_BASE) ? (mileage - LONG_DISTANCE_BASE) * CHARGES_PER_KILOMETER * 0.5 : 0;
     }
 
-    private double mileageFee() {
-        return mileage > 2 ? (mileage - 2) * 0.8 : 0;
+    private double mileageCharges() {
+        return mileage > FREE_KILOMETERS ? (mileage - FREE_KILOMETERS) * CHARGES_PER_KILOMETER : 0;
     }
 }
