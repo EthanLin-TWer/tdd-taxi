@@ -1,6 +1,5 @@
 package com.jiker.keju;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -22,16 +21,16 @@ public class TaximeterTest {
     }
 
     @Test
-    public void should_charge_extra_fifty_percent_of_long_distance_fare_for_parts_over_8_kilometers_given_input_kilometers_is_10() {
-        int result = new Taximeter(10).calculatePrice();
-
-        assertThat(result, is(13));
-    }
-
-    @Test
-    public void should_charge_extra_fifty_percent_of_long_distance_fare_for_parts_over_8_kilometers_given_input_kilometers_is_11() {
+    public void should_charge_extra_fifty_percent_of_long_distance_fare_for_parts_over_8_kilometers() {
         int result = new Taximeter(11).calculatePrice();
 
         assertThat(result, is(14));
+    }
+
+    @Test
+    public void should_charge_0_point_25_chy_for_every_minutes_waiting_for_traffic() {
+        int result = new Taximeter(2, 3).calculatePrice();
+
+        assertThat(result, is(7));
     }
 }
