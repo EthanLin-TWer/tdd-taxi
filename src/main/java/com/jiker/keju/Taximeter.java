@@ -20,9 +20,11 @@ public class Taximeter {
     }
 
     public int calculatePrice() {
-        final double waitingCharges = waitingMinutes * 0.25;
+        return (int) Math.round(BASIC_PRICE + mileageFee() + longDistanceFare() + waitingCharges());
+    }
 
-        return (int) Math.round(BASIC_PRICE + mileageFee() + longDistanceFare() + waitingCharges);
+    private double waitingCharges() {
+        return waitingMinutes * 0.25;
     }
 
     private double longDistanceFare() {
