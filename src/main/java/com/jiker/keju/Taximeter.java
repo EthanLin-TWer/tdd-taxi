@@ -13,8 +13,9 @@ public class Taximeter {
 
     public double calculatePrice() {
         if (mileage > 2) {
-            return 6.8;
+            return 6.0 + (mileage - 2) * 0.8;
         }
+
         return 6.0;
     }
 }
