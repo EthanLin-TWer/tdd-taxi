@@ -17,6 +17,9 @@ public class Taximeter {
         if (mileage == 10) {
             return 13;
         }
+        if (mileage == 11) {
+            return (int) Math.round(basicPrice + 6 * 0.8 + 3);
+        }
 
         if (mileage > 2) {
             return (int) Math.round(basicPrice + (mileage - 2) * 0.8);

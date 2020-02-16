@@ -22,9 +22,16 @@ public class TaximeterTest {
     }
 
     @Test
-    public void should_charge_extra_fifty_percent_of_long_distance_fare_for_parts_over_8_kilometers() {
+    public void should_charge_extra_fifty_percent_of_long_distance_fare_for_parts_over_8_kilometers_given_input_kilometers_is_10() {
         int result = new Taximeter(10).calculatePrice();
 
         assertThat(result, is(13));
+    }
+
+    @Test
+    public void should_charge_extra_fifty_percent_of_long_distance_fare_for_parts_over_8_kilometers_given_input_kilometers_is_11() {
+        int result = new Taximeter(11).calculatePrice();
+
+        assertThat(result, is(14));
     }
 }
