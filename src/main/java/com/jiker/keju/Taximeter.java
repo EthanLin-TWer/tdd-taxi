@@ -4,6 +4,8 @@ public class Taximeter {
     private final int mileage;
     private final int waitingMinutes;
 
+    public static final int BASIC_PRICE = 6;
+
     public Taximeter(int mileage, int waitingMinutes) {
         this.mileage = mileage;
         this.waitingMinutes = waitingMinutes;
@@ -18,10 +20,9 @@ public class Taximeter {
     }
 
     public int calculatePrice() {
-        final int basicPrice = 6;
         final double waitingCharges = waitingMinutes * 0.25;
 
-        return (int) Math.round(basicPrice + middleBand() + longDistanceFare() + waitingCharges);
+        return (int) Math.round(BASIC_PRICE + middleBand() + longDistanceFare() + waitingCharges);
     }
 
     private double longDistanceFare() {
