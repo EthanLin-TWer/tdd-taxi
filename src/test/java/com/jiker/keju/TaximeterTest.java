@@ -33,4 +33,11 @@ public class TaximeterTest {
 
         assertThat(result, is(7));
     }
+
+    @Test
+    public void should_parse_test_input_and_give_result() {
+        String result = Taximeter.process("1公里,等待0分钟");
+
+        assertThat(result, is("收费6元"));
+    }
 }

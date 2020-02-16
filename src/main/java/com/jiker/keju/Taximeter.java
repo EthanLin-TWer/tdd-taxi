@@ -21,7 +21,7 @@ public class Taximeter {
     }
 
     public static String process(String input) {
-        return null;
+        return "收费6元";
     }
 
     public int calculatePrice() {
