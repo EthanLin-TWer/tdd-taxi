@@ -16,7 +16,7 @@ public class AppRunner {
 
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         StringBuffer result = new StringBuffer();
-        String text = null;
+        String text = "";
         while((text = bufferedReader.readLine()) != null){
             result.append(text + "\n");
         }
