@@ -22,8 +22,7 @@ public class AppRunner {
         }
         String input = result.toString();
 
-        String receipt = "";
-        System.out.println(input);
+        String receipt = Taximeter.process(input);
         System.out.println(receipt);
     }
 }
