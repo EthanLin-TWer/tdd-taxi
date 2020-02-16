@@ -11,11 +11,13 @@ public class Taximeter {
         return null;
     }
 
-    public double calculatePrice() {
+    public int calculatePrice() {
+        final int basicPrice = 6;
+
         if (mileage > 2) {
-            return 6.0 + (mileage - 2) * 0.8;
+            return (int) Math.round(basicPrice + (mileage - 2) * 0.8);
         }
 
-        return 6.0;
+        return basicPrice;
     }
 }
