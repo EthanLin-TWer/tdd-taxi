@@ -13,7 +13,7 @@ public class AppRunner {
         String testDataFile = "src/main/resources/testData.txt";
         String input = readFileAsString(testDataFile);
 
-        String receipt = TaximeterPrinter.process(input);
+        String receipt = new TaximeterPrinter().process(input);
         System.out.println(receipt);
     }
 

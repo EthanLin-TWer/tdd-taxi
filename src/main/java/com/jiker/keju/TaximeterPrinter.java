@@ -6,17 +6,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class TaximeterPrinter {
-
     public static final String INPUT_LINE_PATTERN = "(\\d+)公里,等待(\\d+)分钟";
 
-    public static String process(String lines) {
-        return Arrays
-                .stream(lines.split("\n"))
-                .map(TaximeterPrinter::getResultOutput)
-                .collect(Collectors.joining("\n"));
-    }
-
-    private static String getResultOutput(String input) {
+    private String getResultOutput(String input) {
         Pattern pattern = Pattern.compile(INPUT_LINE_PATTERN);
         Matcher result = pattern.matcher(input);
         if (result.find()) {
@@ -28,5 +20,12 @@ public class TaximeterPrinter {
         // todo: input file format error
         // not implemented since the problem itself does not state this case
         return null;
+    }
+
+    public String process(String lines) {
+        return Arrays
+                .stream(lines.split("\n"))
+                .map(this::getResultOutput)
+                .collect(Collectors.joining("\n"));
     }
 }
